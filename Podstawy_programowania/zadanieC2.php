@@ -9,3 +9,11 @@ for($i = $a;$i<=$b;$i++){
 }
 
 echo $result;
+
+$result=0;
+while($a<=$b){
+    $result += $a;
+    $a++;
+}
+
+echo $result;
