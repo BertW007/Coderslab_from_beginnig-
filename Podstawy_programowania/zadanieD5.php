@@ -28,4 +28,5 @@ function table($n)
     echo '</table>';
 }
 
-table(5);
+table(10);
+
