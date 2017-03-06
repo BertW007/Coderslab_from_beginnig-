@@ -38,6 +38,8 @@ function month ($month){
         case 12:
             echo 'grudzień';
             break;
+        default:
+            echo 'nie ma takiego miesiąca';
     }
 }
 
