@@ -3,9 +3,9 @@
 
 class Calculator
 {
-    private $array;
-    private $num1;
-    private $num2;
+    protected $array;
+    protected $num1;
+    protected $num2;
 
     public function __construct($num1, $num2)
     {
@@ -49,9 +49,9 @@ class Calculator
     }
 }
 
-$calc = new Calculator(5,10);
-$calc->add();
-$calc->substract();
-$calc->multiply();
-$calc->divide();
-$calc->getArray();
+//$calc = new Calculator(5,10);
+//$calc->add();
+//$calc->substract();
+//$calc->multiply();
+//$calc->divide();
+//$calc->getArray();
