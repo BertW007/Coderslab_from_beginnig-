@@ -3,7 +3,7 @@
 
 class Shape
 {
-    private $x, $y, $color;
+    protected $x, $y, $color;
 
     public function __construct($x, $y, $color)
     {
@@ -49,10 +49,10 @@ class Shape
     }
 }
 
-$shape = new Shape(1,8,'blue');
-$shape->printInfo();
-echo '<hr>';
-$shape1 = new Shape(5,10,'yellow');
-$shape1->printInfo();
-echo '<hr>';
-echo $shape1->distToShape($shape);
+//$shape = new Shape(1,8,'blue');
+//$shape->printInfo();
+//echo '<hr>';
+//$shape1 = new Shape(5,10,'yellow');
+//$shape1->printInfo();
+//echo '<hr>';
+//echo $shape1->distToShape($shape);
