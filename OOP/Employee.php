@@ -8,7 +8,7 @@
  */
 class Employee
 {
-    private $id, $firstName, $lastName, $salary;
+    protected $id, $firstName, $lastName, $salary;
 
     public function __construct($id, $firstName, $lastName, $salary)
     {
