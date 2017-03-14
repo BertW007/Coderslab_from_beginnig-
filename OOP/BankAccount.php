@@ -3,16 +3,13 @@
 class BankAccount
 {
     private $number, $cash;
+    static private $nextAccNumber = 1;
 
-    public function __construct($number)
+    public function __construct()
     {
-        $this->setNumber($number);
+        $this->number = self::$nextAccNumber;
         $this->setCash();
-    }
-
-    private function setNumber($number)
-    {
-        if(is_int($number) ? $this->number = $number : $this->number = 0);
+        self::$nextAccNumber++;
     }
 
     private function setCash()
@@ -35,7 +32,7 @@ class BankAccount
                 $this->cash -=$amount;
                 echo '-'.$amount.'<hr>';
             }else{
-                echo 'brak wystarczających środków na koncie, pobrano tylko: '.$this->cash.'<hr>';
+                echo 'brak wystarczających środków na koncie nr: '.$this->number.', pobrano tylko: '.$this->cash.'<hr>';
                 $this->cash = 0;
             }
         }
@@ -47,8 +44,16 @@ class BankAccount
     }
 }
 
-$acc = new BankAccount(1234);
+$acc = new BankAccount();
+$acc1 = new BankAccount();
+$acc2 = new BankAccount();
+$acc3 = new BankAccount();
+$acc4 = new BankAccount();
 $acc->printInfo();
+$acc1->printInfo();
+$acc2->printInfo();
+$acc3->printInfo();
+$acc4->printInfo();
 $acc->depositCash(12.99);
 $acc->depositCash(121.32);
 $acc->depositCash(12.11);
