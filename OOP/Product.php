@@ -3,7 +3,7 @@
 
 class Product
 {
-    private $id,$name, $description, $price, $quantity;
+    private $id, $name, $description, $price, $quantity;
     static private $nextId = 0;
 
     /**
@@ -13,14 +13,21 @@ class Product
      * @param $price
      * @param $quantity
      */
-    public function __construct($name, $description, $price, $quantity)
+    public function __construct($description, $price, $quantity)
     {
-        $this->setName($name);
         $this->setDescription($description);
         $this->setPrice($price);
         $this->setQuantity($quantity);
         $this->id = self::$nextId;
         self::$nextId++;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
     }
 
 
@@ -37,7 +44,11 @@ class Product
      */
     public function setName($name)
     {
-        $this->name = $name;
+        if (is_string($name)) {
+            $this->name = $name;
+        } else {
+            die('Wrong name');
+        }
     }
 
     /**
@@ -53,7 +64,11 @@ class Product
      */
     public function setDescription($description)
     {
-        $this->description = $description;
+        if (is_string($description)) {
+            $this->description = $description;
+        } else {
+            die('Wrong description');
+        }
     }
 
     /**
@@ -69,9 +84,9 @@ class Product
      */
     public function setPrice($price)
     {
-        if(is_float($price)) {
+        if (is_float($price) && $price >= 0.01) {
             $this->price = $price;
-        }else{
+        } else {
             $this->price = 0;
         }
     }
@@ -89,14 +104,21 @@ class Product
      */
     public function setQuantity($quantity)
     {
-        if(is_int($quantity)){
+        if (is_int($quantity) && $quantity > 0) {
             $this->quantity = $quantity;
-        }else{
+        } else {
             $this->quantity = 0;
         }
     }
 
-
-
-
+    public function getTotalSum()
+    {
+        return $this->quantity*$this->price;
+    }
 }
+$jajka = new Product('Jaja z wolnego wybiegu',0.30,20);
+$jajka->setName('Jajka');
+$woda = new Product('Woda zrodlana',1.99,6);
+$woda->setName('Woda');
+$chleb = new Product('chleb pszenny',3.49,10);
+$chleb->setName('Chleb');
