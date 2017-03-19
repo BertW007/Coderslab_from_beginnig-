@@ -41,14 +41,6 @@ class ShoppingCart extends Product
 
     public function printRecipt()
     {
-        echo '<table border="black">
-                 <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                 </tr>';
         foreach ($this->products as $object) {
             echo '<tr>
                     <td>' . $object->getId() . '</td>
@@ -58,12 +50,6 @@ class ShoppingCart extends Product
                     <td>' . $object->getTotalSum() . 'zl</td>
                   </tr>';
         }
-
-        echo '    <tr>
-                    <td colspan="4" align="center">Total Price</td>
-                    <td>'.$this->getAllProductPrice().'zl</td>
-                  </tr>
-              </table>';
     }
 }
 
@@ -78,5 +64,17 @@ $koszyk->addProduct($chleb);
 $jajka->setQuantity(223);
 $woda->setQuantity(2334);
 
-
+echo '<table border="black">
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>';
 $koszyk->printRecipt();
+echo '    <tr>
+            <td colspan="4" align="center">Total Price</td>
+            <td>'.$koszyk->getAllProductPrice().'zl</td>
+          </tr>
+      </table>';
