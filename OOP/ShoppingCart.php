@@ -30,9 +30,40 @@ class ShoppingCart extends Product
         }
     }
 
+    public function getAllProductPrice()
+    {
+        $totalPrice = 0;
+        foreach ($this->products as $product) {
+            $totalPrice += $product->getTotalSum();
+        }
+        return $totalPrice;
+    }
+
     public function printRecipt()
     {
+        echo '<table border="black">
+                 <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                 </tr>';
+        foreach ($this->products as $object) {
+            echo '<tr>
+                    <td>' . $object->getId() . '</td>
+                    <td>' . $object->getName() . '</td>
+                    <td>' . $object->getDescription() . '</td>
+                    <td>' . $object->getQuantity() . '</td>
+                    <td>' . $object->getTotalSum() . 'zl</td>
+                  </tr>';
+        }
 
+        echo '    <tr>
+                    <td colspan="4" align="center">Total Price</td>
+                    <td>'.$this->getAllProductPrice().'zl</td>
+                  </tr>
+              </table>';
     }
 }
 
@@ -42,9 +73,10 @@ class ShoppingCart extends Product
 
 $koszyk = new ShoppingCart();
 $koszyk->addProduct($jajka);
-$koszyk->addProduct($chleb);
 $koszyk->addProduct($woda);
-$koszyk->changeProductQuantity(0,121);
-$koszyk->removeProduct($jajka);
+$koszyk->addProduct($chleb);
+$jajka->setQuantity(223);
+$woda->setQuantity(2334);
 
-var_dump($koszyk);
+
+$koszyk->printRecipt();

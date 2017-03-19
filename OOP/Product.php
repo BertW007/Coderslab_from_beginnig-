@@ -113,12 +113,12 @@ class Product
 
     public function getTotalSum()
     {
-        return $this->quantity*$this->price;
+        return ($this->quantity*$this->price);
     }
 }
 $jajka = new Product('Jaja z wolnego wybiegu',0.30,20);
 $jajka->setName('Jajka');
 $woda = new Product('Woda zrodlana',1.99,6);
 $woda->setName('Woda');
-$chleb = new Product('chleb pszenny',3.49,10);
+$chleb = new Product('Chleb pszenny',3.49,10);
 $chleb->setName('Chleb');
